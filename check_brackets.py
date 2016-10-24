@@ -19,18 +19,48 @@ class Bracket:
 if __name__ == "__main__":
     text = sys.stdin.read()
 
-    bracket = Bracket()
+    # Define object by Bracket Class
+    b_01 = Bracket()
     
-    opening_brackets_stack = []
-    for i, next in enumerate(text):
-        if next == '(' or next == '[' or next == '{':
+    stack = []
+    for key, char in enumerate(text):
+        if char == '(' or char == '[' or char == '{':
             # Process opening bracket, write your code here
-            #opening_brackets_stack.append(next)
-            #bracket.Match()
-            pass
+            stack.append(b_01(char, key)) 
+            pass # do nothing
 
-        if next == ')' or next == ']' or next == '}':
+        if char == ')' or char == ']' or char == '}':
             # Process closing bracket, write your code here
+            if not stack: # if stack.Empty()
+                return key
+            top = stack.pop()
+            if not top.match(char):
+                return key
             pass
-
+    if stack:
+        top = stack.pop()
+        return top.position
+    
     # Printing answer, write your code here
+    return "Success"
+
+def checker(text):
+    stack = []
+    for key, char in enumerate(text, start=1):
+
+        if char in ("[", "(", "{"):
+            stack.append(Bracket(char, index))
+
+        elif next in ("]", ")", "}"):
+            if not stack:
+                return index
+
+            top = stack.pop()
+            if not top.match(char):
+                return index
+    if stack:
+        top = stack.pop()
+        return top.position
+
+    return "Success"
+    
