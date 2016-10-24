@@ -26,7 +26,8 @@ if __name__ == "__main__":
     for key, char in enumerate(text):
         if char == '(' or char == '[' or char == '{':
             # Process opening bracket, write your code here
-            stack.append(b_01(char, key)) 
+            
+            stack.append(b_01(char, key)) # stack.push(char, key)
             pass # do nothing
 
         if char == ')' or char == ']' or char == '}':
@@ -39,7 +40,7 @@ if __name__ == "__main__":
             pass
     if stack:
         top = stack.pop()
-        return top.position
+        return top.key
     
     # Printing answer, write your code here
     return "Success"
@@ -60,7 +61,7 @@ def checker(text):
                 return index
     if stack:
         top = stack.pop()
-        return top.position
+        return top.key
 
     return "Success"
     
